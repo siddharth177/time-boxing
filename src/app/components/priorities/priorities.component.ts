@@ -3,9 +3,11 @@ import {MatCard, MatCardActions, MatCardContent, MatCardHeader, MatCardTitle} fr
 import {MatButton} from '@angular/material/button';
 import {Priority} from '../../models/Priority';
 import {NgForOf} from '@angular/common';
+import {PriorityComponent} from './priority/priority.component';
+import {PriorityService} from '../../services/priority.service';
 
 @Component({
-  selector: 'app-priority',
+  selector: 'app-priorities',
   imports: [
     MatCard,
     MatCardTitle,
@@ -13,22 +15,29 @@ import {NgForOf} from '@angular/common';
     MatCardHeader,
     MatButton,
     MatCardContent,
-    NgForOf
+    NgForOf,
+    PriorityComponent
   ],
-  templateUrl: './priority.component.html',
+  templateUrl: './priorities.component.html',
   standalone: true,
-  styleUrl: './priority.component.scss'
+  styleUrl: './priorities.component.scss'
 })
-export class PriorityComponent implements OnInit{
+export class PrioritiesComponent implements OnInit{
   @Input() priorityTitle = 'First priority';
+  @Input() date: Date = new Date();
   @Input() priorities: Array<Priority> = new Array<Priority>();
   @Input({transform: numberAttribute}) maxTasks: number = 3;
+
+  constructor(private priorityService: PriorityService) {
+
+  }
 
   openTaskPopup() {
 
   }
 
   ngOnInit(): void {
+    // this.priorities = this.priorityService.getPriorities();
     this.priorities.push(new Priority(1, 'A', 'red', 'Get this done', new Date())) ;
   }
 }
