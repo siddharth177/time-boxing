@@ -1,10 +1,10 @@
 export class Priority {
-  private priority: number;
-  private index: string
-  private id: string;
-  private color: string;
-  private task: string;
-  private date: Date;
+  public priority: number;
+  public index: string
+  public id: string;
+  public color: string;
+  public task: string;
+  public date: Date;
 
   constructor(priority: number, index: string, color: string, task: string, date: Date) {
     this.priority = priority;

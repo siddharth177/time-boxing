@@ -2,6 +2,12 @@
   <mat-card-header>
     <mat-card-title>{{priorityTitle}}</mat-card-title>
   </mat-card-header>
+  <mat-card-content>
+    <div *ngFor="let priority of priorities; let i = index" class="priority">
+      <span class="priority-id">{{priority.id}}</span>
+      <span class="priority-task">{{priority.task}}</span>
+    </div>
+  </mat-card-content>
   <mat-card-actions>
     <button mat-raised-button
             color="primary"
