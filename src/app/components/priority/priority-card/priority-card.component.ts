@@ -59,9 +59,10 @@ export class PriorityCardComponent implements OnInit{
       panelClass: 'custom-dialog-container',
     });
 
-    dialogRef.afterClosed().subscribe((result: string) => {
+    dialogRef.afterClosed().subscribe((result: any) => {
       if (result) {
-        this.dbSimulation.savePriority(new Priority(this._priority, this.util.getPriorityIndex(this._priorities.length), result, TaskStatus.New, this.util.getCurrentDate(), new Array<BlockedTime>()));
+        console.log(result);
+        this.dbSimulation.savePriority(new Priority(this._priority, this.util.getPriorityIndex(this._priorities.length), result.task, TaskStatus.New, this.util.getCurrentDate(), result.blockedTimes));
         this._priorities = this.dbSimulation.getPriorityList(this._priority, this.util.getCurrentDate())
         console.log(result + ' task is saved');
       }

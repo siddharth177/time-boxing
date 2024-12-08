@@ -10,7 +10,7 @@ import {MatTimepicker, MatTimepickerInput, MatTimepickerToggle} from '@angular/m
 import {MatIcon} from '@angular/material/icon';
 import {NgIf} from '@angular/common';
 import {MatTooltip} from '@angular/material/tooltip';
-import {BlockedTime} from '../../../models/Priority';
+import {BlockedTime, Priority, TaskStatus} from '../../../models/Priority';
 
 class AddTaskDialogComponent {
 }
@@ -59,7 +59,10 @@ export class AddPriorityDialogComponent {
   }
 
   saveTask() {
-    this.dialogRef.close(this.task);
+    this.dialogRef.close({
+      task: this.task,
+      blockedTimes: this._boxedTimes
+    });
   }
 
   saveSchedule() {
