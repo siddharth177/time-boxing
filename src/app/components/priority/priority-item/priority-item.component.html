@@ -1,0 +1,10 @@
+<span class="task-index" mat-line>{{ _priority.priority + _priority.index }}</span>
+<span mat-line class="task-text" (click)="editTask(_priority)">
+          {{ _priority.task }}
+        </span>
+<span class="task-actions">
+          <mat-checkbox [(ngModel)]="isCompleted" (change)="updateTask(_priority)"></mat-checkbox>
+          <button mat-icon-button color="warn" (click)="deleteTask(_priority)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </span>
