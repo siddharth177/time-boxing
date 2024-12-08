@@ -9,6 +9,7 @@ import {DbSimulation} from '../../../services/dbSimulation';
 import {Utilities} from '../../../utils/Utilities';
 import {MatCardContent} from '@angular/material/card';
 import {NgIf} from '@angular/common';
+import {MatDialog} from '@angular/material/dialog';
 
 @Component({
   selector: 'app-priority-item',
@@ -28,6 +29,9 @@ export class PriorityItemComponent {
   @Input() _priority: Priority = new Priority(1, '', '', '', '', new Array<BlockedTime>());
   @Output() taskDeleted = new EventEmitter<Priority>();
   @Output() taskUpdated = new EventEmitter<Priority>();
+
+  constructor(private dialog: MatDialog) {}
+
 
   isEditing: boolean = false; // Flag to toggle edit mode
 
@@ -63,4 +67,7 @@ export class PriorityItemComponent {
     this.taskDeleted.emit(this._priority);
   }
 
+  editPriority() {
+
+  }
 }

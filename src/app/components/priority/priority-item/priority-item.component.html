@@ -15,7 +15,10 @@
   />
   <span class="task-actions">
           <mat-checkbox [(ngModel)]="isCompleted" (change)="updateTask(_priority)"></mat-checkbox>
-          <button mat-icon-button color="warn" (click)="deleteTask(_priority)">
+    <button mat-icon-button color="primary" (click)="editPriority()">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="accent" (click)="deleteTask(_priority)">
             <mat-icon>delete</mat-icon>
           </button>
         </span>
