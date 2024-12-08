@@ -36,3 +36,12 @@ mat-checkbox {
 button[mat-icon-button] {
   margin: 0; /* Ensures no extra margins affect alignment */
 }
+
+.task-edit-input {
+  flex: 1; /* Takes up the same space as the task text */
+  margin: 0 16px; /* Same margin as the task text */
+  padding: 4px; /* Optional padding for better UX */
+  font-size: 1rem; /* Match the task text style */
+  border: 1px solid #ccc; /* Optional: Add a border for clarity */
+  border-radius: 4px; /* Optional: Rounded corners */
+}

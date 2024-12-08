@@ -72,4 +72,9 @@ export class PriorityCardComponent implements OnInit{
     this.dbSimulation.deletePriority(priority.id);
     this._priorities = this.dbSimulation.getPriorityList(this._priority, this.util.getCurrentDate());
   }
+
+  updateTask(priority: Priority) {
+    this.dbSimulation.updatePriority(priority);
+    this._priorities = this.dbSimulation.getPriorityList(this._priority, this.util.getCurrentDate());
+  }
 }

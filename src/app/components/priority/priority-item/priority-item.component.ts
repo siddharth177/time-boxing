@@ -8,6 +8,7 @@ import {Priority, TaskStatus} from '../../../models/Priority';
 import {DbSimulation} from '../../../services/dbSimulation';
 import {Utilities} from '../../../utils/Utilities';
 import {MatCardContent} from '@angular/material/card';
+import {NgIf} from '@angular/common';
 
 @Component({
   selector: 'app-priority-item',
@@ -17,7 +18,8 @@ import {MatCardContent} from '@angular/material/card';
     MatIconButton,
     MatLine,
     FormsModule,
-    MatCardContent
+    MatCardContent,
+    NgIf
   ],
   templateUrl: './priority-item.component.html',
   styleUrl: './priority-item.component.scss'
@@ -25,6 +27,24 @@ import {MatCardContent} from '@angular/material/card';
 export class PriorityItemComponent {
   @Input() _priority: Priority = new Priority(1, '', '', '', '');
   @Output() taskDeleted = new EventEmitter<Priority>();
+  @Output() taskUpdated = new EventEmitter<Priority>();
+
+  isEditing: boolean = false; // Flag to toggle edit mode
+
+  editTask() {
+    this.isEditing = true; // Enter edit mode
+  }
+
+  saveTask() {
+    this.isEditing = false; // Exit edit mode
+    this.taskUpdated.emit(this._priority);
+    // Optionally emit an event or call a service to save the updated task
+  }
+
+  cancelEdit() {
+    this.isEditing = false; // Exit edit mode without saving
+    // Optionally reset the input to its original value if needed
+  }
 
   get isCompleted() : boolean {
     return this._priority.status === TaskStatus.Completed;
@@ -32,9 +52,6 @@ export class PriorityItemComponent {
 
   set isCompleted(value: boolean) {
     this._priority.status = value ? TaskStatus.Completed : TaskStatus.New;
-  }
-
-  constructor(private dbSimulation: DbSimulation, private util: Utilities) {
   }
 
   updateTask(priority: Priority) {
@@ -46,7 +63,4 @@ export class PriorityItemComponent {
     this.taskDeleted.emit(this._priority);
   }
 
-  editTask(priority: Priority) {
-
-  }
 }

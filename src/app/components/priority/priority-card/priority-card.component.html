@@ -5,7 +5,7 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngFor="let priority of _priorities; let i = index">
-        <app-priority-item class="priority-item" [_priority]="priority" (taskDeleted)="deleteTask($event)"></app-priority-item>
+        <app-priority-item class="priority-item" [_priority]="priority" (taskDeleted)="deleteTask($event)" (taskUpdated)="updateTask($event)"></app-priority-item>
       </mat-list-item>
     </mat-list>
     <button

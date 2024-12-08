@@ -38,4 +38,11 @@ export class DbSimulation {
     this._priorities = this.getPriorityList(_priority, date);
 
   }
+
+  updatePriority(priority: Priority) {
+    const index = this._priorities.findIndex(p => p.id === priority.id)
+    if (index !== -1) {
+      this._priorities[index] = {...this._priorities[index], task: priority.task}
+    }
+  }
 }
