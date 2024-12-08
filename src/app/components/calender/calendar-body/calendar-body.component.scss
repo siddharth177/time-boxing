@@ -1,38 +1,48 @@
+:host {
+  --slot-height: 40px;
+  --visible-slots: 10;
+}
+
 .calendar-body {
-    display: grid;
-    grid-auto-rows: 40px;
-    gap: 2px;
-    overflow-y: auto;
-    height: 400px; /* Fixed height to show approximately 10 rows */
-    padding: 10px;
-    background-color: #f5f5f5;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .time-row {
-    display: grid;
-    grid-template-columns: 80px 1fr;
-    align-items: center;
-    background-color: #ffffff;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-  }
-  
-  .time-label {
-    text-align: right;
-    padding: 5px 10px;
-    font-size: 14px;
-    font-weight: bold;
-    color: #555;
-    background-color: #e9ecef;
-    border-right: 1px solid #ddd;
-  }
-  
-  .time-slot {
-    padding: 5px;
-    background-color: #ffffff;
-    cursor: pointer;
-    border-left: 1px solid #ddd;
-  }
-  
+  display: grid;
+  grid-auto-rows: var(--slot-height);
+  gap: 2px;
+  overflow-y: auto;
+  height: calc(var(--slot-height) * var(--visible-slots));
+  padding: 10px;
+  background-color: #f5f5f5;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  scroll-behavior: smooth;
+}
+
+.time-row {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  align-items: center;
+  background-color: #ffffff;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.time-label {
+  text-align: right;
+  padding: 5px 10px;
+  font-size: 14px;
+  font-weight: bold;
+  color: #555;
+  background-color: #e9ecef;
+  border-right: 1px solid #ddd;
+}
+
+.time-slot {
+  padding: 15px;
+  background-color: #ffffff;
+  cursor: pointer;
+  border-left: 1px solid #ddd;
+}
+
+.time-slot.highlight {
+  background-color: #ffeb3b;
+  /* Yellow highlight color */
+}
