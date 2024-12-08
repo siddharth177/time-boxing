@@ -6,10 +6,11 @@ import {DbSimulation} from './services/dbSimulation';
 import {Utilities} from './utils/Utilities';
 import {CdkListbox} from '@angular/cdk/listbox';
 import { CalenderComponent } from "./components/calender/calender.component";
+import {MatNativeDateModule} from '@angular/material/core';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PriorityCardComponent, CdkListbox, CalenderComponent],
+  imports: [RouterOutlet, PriorityCardComponent, CdkListbox, CalenderComponent, MatNativeDateModule],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrl: './app.component.scss',

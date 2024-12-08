@@ -17,3 +17,19 @@ textarea {
   line-height: 1.5; /* Improve readability */
   font-size: 16px; /* Match Material Design typography */
 }
+
+.date-picker {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Creates two equal-width columns */
+  gap: 16px; /* Gap between date and time fields */
+}
+
+.start-picker, .end-picker {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Align start date and time, and end date and time side by side */
+  gap: 16px; /* Adjust the gap between fields */
+}
+
+.start-picker, .end-picker {
+  margin-bottom: 24px; /* Add space between start and end sections */
+}

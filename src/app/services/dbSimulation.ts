@@ -1,11 +1,11 @@
 import {Injectable} from '@angular/core';
-import {Priority, TaskStatus} from '../models/Priority';
+import {BlockedTime, Priority, TaskStatus} from '../models/Priority';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DbSimulation {
-  _priorities: Array<Priority> = new Array<Priority>(new Priority(1, 'A', 'tasdkfaslkdjf ', 'New', '12082024'));
+  _priorities: Array<Priority> = new Array<Priority>(new Priority(1, 'A', 'tasdkfaslkdjf ', 'New', '12082024', new Array<BlockedTime>()));
 
   public savePriority(priority: Priority) {
     this._priorities.push(priority);
@@ -31,7 +31,7 @@ export class DbSimulation {
 
   public getPriorityList(priority: any, date: string) {
     // return this.priorities;
-    return this._priorities.filter(p => (p.priority === priority && p.date === date));
+    return this._priorities.filter(p => (p.priority === priority && p.dateCreated === date));
   }
 
   updatePriorities(_priority: number, date: string) {

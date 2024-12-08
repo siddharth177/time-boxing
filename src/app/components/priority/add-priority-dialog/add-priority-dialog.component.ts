@@ -1,10 +1,15 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {MatDialogActions, MatDialogContent, MatDialogRef, MatDialogTitle} from '@angular/material/dialog';
 import {MatDivider} from '@angular/material/divider';
-import {MatFormField, MatLabel} from '@angular/material/form-field';
+import {MatFormField, MatHint, MatLabel, MatSuffix} from '@angular/material/form-field';
 import {FormsModule} from '@angular/forms';
-import {MatButton} from '@angular/material/button';
+import {MatButton, MatFabButton} from '@angular/material/button';
 import {MatInput} from '@angular/material/input';
+import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
+import {MatTimepicker, MatTimepickerInput, MatTimepickerToggle} from '@angular/material/timepicker';
+import {MatIcon} from '@angular/material/icon';
+import {NgIf} from '@angular/common';
+import {MatTooltip} from '@angular/material/tooltip';
 
 class AddTaskDialogComponent {
 }
@@ -20,13 +25,27 @@ class AddTaskDialogComponent {
     FormsModule,
     MatButton,
     MatInput,
-    MatLabel
+    MatLabel,
+    MatDatepickerInput,
+    MatDatepickerToggle,
+    MatDatepicker,
+    MatHint,
+    MatSuffix,
+    MatTimepickerInput,
+    MatTimepicker,
+    MatTimepickerToggle,
+    MatFabButton,
+    MatIcon,
+    NgIf,
+    MatTooltip
   ],
   templateUrl: './add-priority-dialog.component.html',
   styleUrl: './add-priority-dialog.component.scss'
 })
 export class AddPriorityDialogComponent {
   task: string = '';
+  @Input() _dialogBoxTitle: string = 'Add New Task';
+  @Input() _startTime: any;
   constructor(private dialogRef: MatDialogRef<AddTaskDialogComponent>) {}
 
 
@@ -36,5 +55,9 @@ export class AddPriorityDialogComponent {
 
   saveTask() {
     this.dialogRef.close(this.task);
+  }
+
+  saveSchedule() {
+
   }
 }

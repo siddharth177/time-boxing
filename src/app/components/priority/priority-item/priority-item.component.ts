@@ -4,7 +4,7 @@ import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
 import {MatLine} from '@angular/material/core';
 import {FormsModule} from '@angular/forms';
-import {Priority, TaskStatus} from '../../../models/Priority';
+import {BlockedTime, Priority, TaskStatus} from '../../../models/Priority';
 import {DbSimulation} from '../../../services/dbSimulation';
 import {Utilities} from '../../../utils/Utilities';
 import {MatCardContent} from '@angular/material/card';
@@ -25,7 +25,7 @@ import {NgIf} from '@angular/common';
   styleUrl: './priority-item.component.scss'
 })
 export class PriorityItemComponent {
-  @Input() _priority: Priority = new Priority(1, '', '', '', '');
+  @Input() _priority: Priority = new Priority(1, '', '', '', '', new Array<BlockedTime>());
   @Output() taskDeleted = new EventEmitter<Priority>();
   @Output() taskUpdated = new EventEmitter<Priority>();
 

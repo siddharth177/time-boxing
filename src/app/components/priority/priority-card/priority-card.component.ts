@@ -6,7 +6,7 @@ import {MatIcon} from '@angular/material/icon';
 import {MatLine} from '@angular/material/core';
 import {MatFabButton, MatIconButton} from '@angular/material/button';
 import {NgForOf, NgIf} from '@angular/common';
-import {Priority, TaskStatus} from '../../../models/Priority';
+import {BlockedTime, Priority, TaskStatus} from '../../../models/Priority';
 import {MatDialog} from '@angular/material/dialog';
 import {AddPriorityDialogComponent} from '../add-priority-dialog/add-priority-dialog.component';
 import {DbSimulation} from '../../../services/dbSimulation';
@@ -54,13 +54,14 @@ export class PriorityCardComponent implements OnInit{
   addTask() {
     const dialogRef = this.dialog.open(AddPriorityDialogComponent, {
       width: '100%', // Set to 100% to match the card's dynamic size
-      maxWidth: '400px', // Set an upper limit to prevent excessive width
+      maxWidth: '90vw', // Set an upper limit to prevent excessive width
+      maxHeight: '70vh',
       panelClass: 'custom-dialog-container',
     });
 
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result) {
-        this.dbSimulation.savePriority(new Priority(this._priority, this.util.getPriorityIndex(this._priorities.length), result, TaskStatus.New, this.util.getCurrentDate()));
+        this.dbSimulation.savePriority(new Priority(this._priority, this.util.getPriorityIndex(this._priorities.length), result, TaskStatus.New, this.util.getCurrentDate(), new Array<BlockedTime>()));
         this._priorities = this.dbSimulation.getPriorityList(this._priority, this.util.getCurrentDate())
         console.log(result + ' task is saved');
       }
