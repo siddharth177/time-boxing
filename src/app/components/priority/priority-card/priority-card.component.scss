@@ -10,10 +10,17 @@
 }
 
 mat-list-item {
-  display: flex;
+  display: block;
   justify-content: space-between;
   align-items: center;
   padding: 8px 0;
+}
+
+.priority-item {
+  display: flex; /* Ensure flex behavior is applied here */
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 
 .add-button {

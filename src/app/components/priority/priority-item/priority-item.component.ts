@@ -7,6 +7,7 @@ import {FormsModule} from '@angular/forms';
 import {Priority, TaskStatus} from '../../../models/Priority';
 import {DbSimulation} from '../../../services/dbSimulation';
 import {Utilities} from '../../../utils/Utilities';
+import {MatCardContent} from '@angular/material/card';
 
 @Component({
   selector: 'app-priority-item',
@@ -15,7 +16,8 @@ import {Utilities} from '../../../utils/Utilities';
     MatIcon,
     MatIconButton,
     MatLine,
-    FormsModule
+    FormsModule,
+    MatCardContent
   ],
   templateUrl: './priority-item.component.html',
   styleUrl: './priority-item.component.scss'

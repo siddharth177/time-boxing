@@ -1,5 +1,14 @@
+.task-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Ensures proper spacing between elements */
+  width: 100%; /* Ensures the container spans the required width */
+  padding: 8px 0; /* Optional: Adds vertical padding for spacing */
+  gap: 16px;/* Space between index, text, and actions */
+}
 
 .task-index {
+  flex-shrink: 0;  /* Prevent shrinking */
   width: 40px; /* Fixed width for index */
   font-weight: bold;
   text-align: center;
@@ -7,14 +16,23 @@
 
 .task-text {
   flex: 1;
-  margin: 0 16px;
+  margin: 0;
   cursor: pointer;
-  text-overflow: ellipsis; /* Handle long text */
+  text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;
 }
 
 .task-actions {
   display: flex;
-  gap: 8px;
+  align-items: center; /* Centers the checkbox and delete button */
+  gap: 8px; /* Adds spacing between the checkbox and delete button */
+}
+
+mat-checkbox {
+  margin: 0; /* Removes unnecessary margins from the checkbox */
+}
+
+button[mat-icon-button] {
+  margin: 0; /* Ensures no extra margins affect alignment */
 }
