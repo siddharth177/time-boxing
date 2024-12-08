@@ -55,7 +55,19 @@
         <mat-icon>add</mat-icon>
       </button>
     </div>
-
+    <div class="display-schedulers">
+      <div *ngFor="let scheduler of _boxedTimes; let i = index" class="scheduler-card">
+        <div class="scheduler-details">
+          <p><strong>Start Date:</strong> {{ scheduler.startDate | date: 'MM/dd/yyyy' }} {{ scheduler.startTime }}</p>
+          <p><strong>End Date:</strong> {{ scheduler.endDate | date: 'MM/dd/yyyy' }} {{ scheduler.endTime }}</p>
+<!--          <p><strong>Duration:</strong> {{ scheduler.duration.hours }} hours {{ scheduler.duration.minutes }} minutes</p>-->
+        </div>
+        <div class="scheduler-actions">
+          <button mat-button color="primary" (click)="editSchedule(i)">Edit</button>
+          <button mat-button color="warn" (click)="deleteSchedule(i)">Delete</button>
+        </div>
+      </div>
+    </div>
   </mat-dialog-content>
 
   <mat-dialog-actions align="end">

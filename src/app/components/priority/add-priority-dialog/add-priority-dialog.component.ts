@@ -8,7 +8,7 @@ import {MatInput} from '@angular/material/input';
 import {MatDatepicker, MatDatepickerInput, MatDatepickerToggle} from '@angular/material/datepicker';
 import {MatTimepicker, MatTimepickerInput, MatTimepickerToggle} from '@angular/material/timepicker';
 import {MatIcon} from '@angular/material/icon';
-import {NgIf} from '@angular/common';
+import {DatePipe, NgForOf, NgIf} from '@angular/common';
 import {MatTooltip} from '@angular/material/tooltip';
 import {BlockedTime, Priority, TaskStatus} from '../../../models/Priority';
 
@@ -38,7 +38,9 @@ class AddTaskDialogComponent {
     MatFabButton,
     MatIcon,
     NgIf,
-    MatTooltip
+    MatTooltip,
+    DatePipe,
+    NgForOf
   ],
   templateUrl: './add-priority-dialog.component.html',
   styleUrl: './add-priority-dialog.component.scss'
@@ -99,4 +101,19 @@ export class AddPriorityDialogComponent {
     this._endTime = '';
   }
 
+  editSchedule(index: number) {
+    const scheduler = this._boxedTimes[index];
+    this._startDate = scheduler.startDate;
+    this._startTime = scheduler.startTime;
+    this._endDate = scheduler.endDate;
+    this._endTime = scheduler.endTime;
+
+    // Optionally you can delete it after editing if you don't want duplicates
+    this.deleteSchedule(index);
+  }
+
+  // Function to delete a scheduler by index
+  deleteSchedule(index: number) {
+    this._boxedTimes.splice(index, 1);
+  }
 }
