@@ -3,9 +3,13 @@ import {
   AfterViewInit,
   Component,
   ElementRef,
+  Input,
+  OnChanges,
   OnInit,
+  SimpleChanges,
   ViewChild,
 } from '@angular/core';
+import { Utilities } from '../../../utils/Utilities';
 
 @Component({
   selector: 'app-calendar-body',
@@ -13,11 +17,15 @@ import {
   templateUrl: './calendar-body.component.html',
   styleUrls: ['./calendar-body.component.scss'],
 })
-export class CalendarBodyComponent implements OnInit, AfterViewInit {
+export class CalendarBodyComponent implements OnInit, AfterViewInit, OnChanges {
+  @Input() selectedDate!: Date;
+
   timeSlots: string[] = [];
   flooredCurrentTime: string = '';
-  highlightedIndex: number = 0;
+  highlightedIndex: number = -1;
   slotHeight: number = 40; // default
+
+  constructor(private util: Utilities) {}
 
   @ViewChild('calendarBody', { static: false }) calendarBody:
     | ElementRef
@@ -26,6 +34,12 @@ export class CalendarBodyComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.generateTimeSlots();
     this.floorCurrentTime();
+  }
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['selectedDate']) {
+      this.highlightedIndex = -1;
+      this.floorCurrentTime();
+    }
   }
 
   ngAfterViewInit() {
@@ -64,6 +78,14 @@ export class CalendarBodyComponent implements OnInit, AfterViewInit {
   // Floor the current time to the nearest 30-minute mark
   floorCurrentTime() {
     const now = new Date();
+
+    // If selected date is not same current date, then no need to highlight the window where current time is present
+    if (
+      this.util.getTrimmedDate(now).getTime() !==
+      this.util.getTrimmedDate(this.selectedDate).getTime()
+    )
+      return;
+
     const minutes = now.getMinutes();
     const flooredMinutes = Math.floor(minutes / 30) * 30;
 
@@ -82,7 +104,12 @@ export class CalendarBodyComponent implements OnInit, AfterViewInit {
 
   // Check if the current time matches a time slot
   isCurrentTime(time: string): boolean {
-    return time === this.flooredCurrentTime;
+    const now = this.util.getTrimmedDate(new Date());
+    const sDate = this.util.getTrimmedDate(this.selectedDate);
+
+    return (
+      now.getTime() === sDate.getTime() && time === this.flooredCurrentTime
+    );
   }
   getSlotHeightFromCSS() {
     if (typeof window === 'undefined') {
@@ -102,7 +129,7 @@ export class CalendarBodyComponent implements OnInit, AfterViewInit {
         this.highlightedIndex * this.slotHeight -
         containerHeight / 2 +
         this.slotHeight / 2;
-        
+
       this.calendarBody.nativeElement.scrollTo({
         top: scrollPosition,
         behavior: 'smooth',

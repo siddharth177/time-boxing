@@ -1,2 +1,5 @@
-<app-calendar-header/>
-<app-calendar-body/>
+<app-calendar-header
+  [selectedDate]="selectedDate"
+  (dateChange)="onDateChange($event)"
+/>
+<app-calendar-body [selectedDate]="selectedDate" />
