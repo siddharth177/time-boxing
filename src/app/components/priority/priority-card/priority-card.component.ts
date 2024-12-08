@@ -35,10 +35,12 @@ export class PriorityCardComponent implements OnInit{
   @Input() public _priorities: Array<Priority> = new Array<Priority>();
   @Input() public _maxPriorities: number = 3;
   @Input() public _priority: number = 1;
+  @Input() public _priorityTitle: string = '';
 
   constructor(private dialog: MatDialog, private dbSimulation: DbSimulation, private util: Utilities) {}
   ngOnInit(): void {
     this._priorities = this.dbSimulation.getPriorityList(this._priority, this.util.getCurrentDate())
+    this._priorityTitle = this.util.getPriorityTitle(this._priority);
     console.log(this._priorities);
   }
 

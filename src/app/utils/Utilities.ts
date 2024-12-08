@@ -15,4 +15,14 @@ export class Utilities {
   public getCurrentDate() {
     return this.getFormattedDate(new Date());
   }
+
+  getPriorityTitle(priority: number) {
+    if(priority === 1)
+      return 'First Priorities'
+    if(priority === 2)
+      return 'Second Priorities'
+    if(priority === 3)
+      return 'Chores/Must do'
+    return '';
+  }
 }

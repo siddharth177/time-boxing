@@ -1,17 +1,16 @@
 <mat-card class="task-card" mat-elevation="4">
   <mat-card-title>
-    <span>First Priority</span>
+    <span>{{_priorityTitle}}</span>
   </mat-card-title>
-  <mat-divider></mat-divider>
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngFor="let priority of _priorities; let i = index">
-        <span mat-line>{{ priority.id }}</span>
+        <span class="task-index" mat-line>{{ priority.id }}</span>
         <span mat-line class="task-text" (click)="editTask(priority)">
           {{ priority.task }}
         </span>
         <span class="task-actions">
-          <button mat-icon-button (click)="completeTask(priority)">
+          <button mat-icon-button (click)="completeTask(priority)" color="primary">
             <mat-icon>check_circle</mat-icon>
           </button>
           <button mat-icon-button color="warn" (click)="deleteTask(priority)">
@@ -22,7 +21,7 @@
     </mat-list>
     <button
       mat-fab
-      color="primary"
+      color="warn"
       class="add-button"
       *ngIf="_priorities.length < _maxPriorities"
       (click)="addTask()"
