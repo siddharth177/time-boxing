@@ -1,4 +1,4 @@
-import {Component, Input} from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 import {MatCheckbox} from '@angular/material/checkbox';
 import {MatIcon} from '@angular/material/icon';
 import {MatIconButton} from '@angular/material/button';
@@ -22,6 +22,7 @@ import {Utilities} from '../../../utils/Utilities';
 })
 export class PriorityItemComponent {
   @Input() _priority: Priority = new Priority(1, '', '', '', '');
+  @Output() taskDeleted = new EventEmitter<Priority>();
 
   get isCompleted() : boolean {
     return this._priority.status === TaskStatus.Completed;
@@ -40,7 +41,7 @@ export class PriorityItemComponent {
   }
 
   deleteTask(priority: Priority) {
-    this.dbSimulation.deletePriority(priority.id);
+    this.taskDeleted.emit(this._priority);
   }
 
   editTask(priority: Priority) {

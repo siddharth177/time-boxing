@@ -66,4 +66,10 @@ export class PriorityCardComponent implements OnInit{
       }
     });
   }
+
+
+  deleteTask(priority: Priority) {
+    this.dbSimulation.deletePriority(priority.id);
+    this._priorities = this.dbSimulation.getPriorityList(this._priority, this.util.getCurrentDate());
+  }
 }
