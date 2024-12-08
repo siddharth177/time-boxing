@@ -31,10 +31,10 @@ export class AddPriorityDialogComponent {
 
 
   closeDialog() {
-    this.dialogRef.close(this.task);
+    this.dialogRef.close();
   }
 
   saveTask() {
-    this.dialogRef.close();
+    this.dialogRef.close(this.task);
   }
 }
