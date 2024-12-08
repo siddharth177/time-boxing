@@ -1,11 +1,14 @@
 <mat-card class="task-card" mat-elevation="4">
-  <mat-card-title>
-    <span>{{_priorityTitle}}</span>
-  </mat-card-title>
+  <div class="mat-card-title-container">
+    <mat-card-title class="mat-card-title">
+      <span>{{ _priorityTitle }}</span>
+    </mat-card-title>
+  </div>
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngFor="let priority of _priorities; let i = index">
-        <app-priority-item class="priority-item" [_priority]="priority" (taskDeleted)="deleteTask($event)" (taskUpdated)="updateTask($event)"></app-priority-item>
+        <app-priority-item class="priority-item" [_priority]="priority" (taskDeleted)="deleteTask($event)"
+                           (taskUpdated)="updateTask($event)"></app-priority-item>
       </mat-list-item>
     </mat-list>
     <button
