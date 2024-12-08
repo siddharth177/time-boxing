@@ -2,10 +2,17 @@
   <h2 mat-dialog-title>Add New Task</h2>
   <mat-divider></mat-divider>
 
+<!--  <mat-dialog-content>-->
+<!--    <mat-form-field class="task-input" appearance="fill">-->
+<!--      <mat-label>Task</mat-label>-->
+<!--      <input matInput [(ngModel)]="task">-->
+<!--    </mat-form-field>-->
+<!--  </mat-dialog-content>-->
+
   <mat-dialog-content>
-    <mat-form-field class="task-input" appearance="fill">
+    <mat-form-field class="multi-line-textarea" appearance="fill">
       <mat-label>Task</mat-label>
-      <input matInput [(ngModel)]="task">
+      <textarea matInput rows="3" [(ngModel)]="task"></textarea>
     </mat-form-field>
   </mat-dialog-content>
 
