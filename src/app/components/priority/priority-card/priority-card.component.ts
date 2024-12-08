@@ -54,7 +54,7 @@ export class PriorityCardComponent implements OnInit{
   addTask() {
     const dialogRef = this.dialog.open(AddPriorityDialogComponent, {
       width: '100%', // Set to 100% to match the card's dynamic size
-      maxWidth: '90vw', // Set an upper limit to prevent excessive width
+      maxWidth: '50vw', // Set an upper limit to prevent excessive width
       maxHeight: '70vh',
       panelClass: 'custom-dialog-container',
     });

@@ -19,17 +19,13 @@ textarea {
 }
 
 .date-picker {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Creates two equal-width columns */
-  gap: 16px; /* Gap between date and time fields */
+  display: flex;
+  align-items: center;
 }
 
 .start-picker, .end-picker {
-  display: grid;
-  grid-template-columns: 1fr 1fr; /* Align start date and time, and end date and time side by side */
+  display: inline-block;
+  //grid-template-columns: 1fr 1fr; /* Align start date and time, and end date and time side by side */
   gap: 16px; /* Adjust the gap between fields */
 }
 
-.start-picker, .end-picker {
-  margin-bottom: 24px; /* Add space between start and end sections */
-}

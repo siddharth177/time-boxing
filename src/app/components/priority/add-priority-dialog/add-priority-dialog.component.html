@@ -8,8 +8,8 @@
         <textarea matInput [(ngModel)]="task"></textarea>
       </ng-container>
     </mat-form-field>
-    <ng-container class="date-picker">
-      <ng-container class="start-picker">
+    <div class="date-picker">
+      <div class="start-picker">
         <mat-form-field class="start-date-picker">
           <mat-label>Choose start date</mat-label>
           <input matInput [matDatepicker]="startDatePicker" [(ngModel)]="_startDate">
@@ -26,8 +26,8 @@
           <mat-timepicker #startTimepicker/>
           <mat-timepicker-toggle [for]="startTimepicker" matSuffix/>
         </mat-form-field>
-      </ng-container>
-      <ng-container class="end-picker">
+      </div>
+      <div class="end-picker">
         <mat-form-field class="end-date-picker">
           <mat-label>Choose end date</mat-label>
           <input matInput [matDatepicker]="endDatePicker" [(ngModel)]="_endDate">
@@ -44,7 +44,7 @@
           <mat-timepicker #endTimePicker/>
           <mat-timepicker-toggle [for]="endTimePicker" matSuffix/>
         </mat-form-field>
-      </ng-container>
+      </div>
       <button matTooltip="save scheduler"
         mat-fab
         color="warn"
@@ -54,7 +54,7 @@
       >
         <mat-icon>add</mat-icon>
       </button>
-    </ng-container>
+    </div>
 
   </mat-dialog-content>
 
