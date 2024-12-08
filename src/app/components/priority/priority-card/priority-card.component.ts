@@ -11,6 +11,9 @@ import {MatDialog} from '@angular/material/dialog';
 import {AddPriorityDialogComponent} from '../add-priority-dialog/add-priority-dialog.component';
 import {DbSimulation} from '../../../services/dbSimulation';
 import {Utilities} from '../../../utils/Utilities';
+import {MatCheckbox} from '@angular/material/checkbox';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {PriorityItemComponent} from '../priority-item/priority-item.component';
 
 @Component({
   selector: 'app-priority-card',
@@ -26,7 +29,11 @@ import {Utilities} from '../../../utils/Utilities';
     MatIconButton,
     NgIf,
     NgForOf,
-    MatFabButton
+    MatFabButton,
+    MatCheckbox,
+    FormsModule,
+    ReactiveFormsModule,
+    PriorityItemComponent
   ],
   templateUrl: './priority-card.component.html',
   styleUrl: './priority-card.component.scss'
@@ -41,10 +48,7 @@ export class PriorityCardComponent implements OnInit{
   ngOnInit(): void {
     this._priorities = this.dbSimulation.getPriorityList(this._priority, this.util.getCurrentDate())
     this._priorityTitle = this.util.getPriorityTitle(this._priority);
-    console.log(this._priorities);
-  }
-
-  completeTask(priority: Priority) {
+    console.log('loaded ' + this._priorityTitle + ' : ' + this._priorities);
   }
 
   addTask() {
@@ -57,18 +61,9 @@ export class PriorityCardComponent implements OnInit{
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result) {
         this.dbSimulation.savePriority(new Priority(this._priority, this.util.getPriorityIndex(this._priorities.length), result, TaskStatus.New, this.util.getCurrentDate()));
-
         this._priorities = this.dbSimulation.getPriorityList(this._priority, this.util.getCurrentDate())
-        console.log('new priorites updated');
+        console.log(result + ' task is saved');
       }
     });
-  }
-
-  deleteTask(priority: Priority) {
-
-  }
-
-  editTask(priority: Priority) {
-
   }
 }

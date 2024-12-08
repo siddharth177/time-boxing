@@ -16,26 +16,6 @@ mat-list-item {
   padding: 8px 0;
 }
 
-.task-index {
-  width: 40px; /* Fixed width for index */
-  font-weight: bold;
-  text-align: center;
-}
-
-.task-text {
-  flex: 1;
-  margin: 0 16px;
-  cursor: pointer;
-  text-overflow: ellipsis; /* Handle long text */
-  white-space: nowrap;
-  overflow: hidden;
-}
-
-.task-actions {
-  display: flex;
-  gap: 8px;
-}
-
 .add-button {
   display: block;
   margin: 16px auto;

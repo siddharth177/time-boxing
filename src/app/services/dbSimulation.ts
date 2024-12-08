@@ -5,15 +5,15 @@ import {Priority, TaskStatus} from '../models/Priority';
   providedIn: 'root'
 })
 export class DbSimulation {
-  priorities: Array<Priority> = new Array<Priority>();
+  _priorities: Array<Priority> = new Array<Priority>(new Priority(1, 'A', 'tasdkfaslkdjf ', 'New', '12082024'));
 
   public savePriority(priority: Priority) {
-    this.priorities.push(priority);
-    console.log('priority saved. new List: ' + this.priorities)
+    this._priorities.push(priority);
+    console.log('priority saved. new List: ' + this._priorities)
   }
 
   public deletePriority(id: string) {
-    this.priorities = this.priorities.filter(p => p.id !== id);
+    this._priorities = this._priorities.filter(p => p.id !== id);
   }
 
   public getFirstPriorityList(date: string): Array<Priority> {
@@ -31,6 +31,11 @@ export class DbSimulation {
 
   public getPriorityList(priority: any, date: string) {
     // return this.priorities;
-    return this.priorities.filter(p => (p.priority === priority && p.date === date));
+    return this._priorities.filter(p => (p.priority === priority && p.date === date));
+  }
+
+  updatePriorities(_priority: number, date: string) {
+    this._priorities = this.getPriorityList(_priority, date);
+
   }
 }
