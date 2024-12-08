@@ -1,5 +1,5 @@
 <div class="calendar-header">
-  <mat-card class="nav-button" (click)="navigateToPreviousDay()">Previous</mat-card>
-  <div class="current-date">{{ currentDate | date: 'EEE, MMM d, yyyy' }}</div>
-  <mat-card class="nav-button" (click)="navigateToNextDay()">Next</mat-card>
+  <mat-card class="nav-button" (click)="navigateToPreviousDay()">Previous Day</mat-card>
+  <div class="current-date">{{ selectedDate | date: 'EEE, MMM d, yyyy' }}</div>
+  <mat-card class="nav-button" (click)="navigateToNextDay()">Next Day</mat-card>
 </div>

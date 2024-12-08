@@ -1,6 +1,6 @@
-<div class="calendar-body">
-  <div class="time-row" *ngFor="let time of timeSlots; let i = index">
+<div class="calendar-body" #calendarBody>
+  <div class="time-row" *ngFor="let time of timeSlots">
     <div class="time-label">{{ time }}</div>
-    <div class="time-slot"></div>
+    <div class="time-slot" [ngClass]="{ highlight: isCurrentTime(time) }"></div>
   </div>
 </div>
