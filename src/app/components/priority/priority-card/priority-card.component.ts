@@ -6,7 +6,7 @@ import {MatIcon} from '@angular/material/icon';
 import {MatLine} from '@angular/material/core';
 import {MatFabButton, MatIconButton} from '@angular/material/button';
 import {NgForOf, NgIf} from '@angular/common';
-import {Priority} from '../../../models/Priority';
+import {Priority, TaskStatus} from '../../../models/Priority';
 import {MatDialog} from '@angular/material/dialog';
 import {AddPriorityDialogComponent} from '../add-priority-dialog/add-priority-dialog.component';
 import {DbSimulation} from '../../../services/dbSimulation';
@@ -45,7 +45,6 @@ export class PriorityCardComponent implements OnInit{
   }
 
   completeTask(priority: Priority) {
-
   }
 
   addTask() {
@@ -57,11 +56,12 @@ export class PriorityCardComponent implements OnInit{
 
     dialogRef.afterClosed().subscribe((result: string) => {
       if (result) {
-        this.dbSimulation.savePriority(new Priority(this._priority, 'A', 'red', result, 'New', this.util.getCurrentDate()));
+        this.dbSimulation.savePriority(new Priority(this._priority, this.util.getPriorityIndex(this._priorities.length), result, TaskStatus.New, this.util.getCurrentDate()));
+
+        this._priorities = this.dbSimulation.getPriorityList(this._priority, this.util.getCurrentDate())
+        console.log('new priorites updated');
       }
     });
-
-    this._priorities = this.dbSimulation.getPriorityList(1, this.util.getCurrentDate())
   }
 
   deleteTask(priority: Priority) {

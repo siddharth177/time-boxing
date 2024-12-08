@@ -5,7 +5,7 @@
   <mat-card-content>
     <mat-list>
       <mat-list-item *ngFor="let priority of _priorities; let i = index">
-        <span class="task-index" mat-line>{{ priority.id }}</span>
+        <span class="task-index" mat-line>{{ priority.priority + priority.index }}</span>
         <span mat-line class="task-text" (click)="editTask(priority)">
           {{ priority.task }}
         </span>

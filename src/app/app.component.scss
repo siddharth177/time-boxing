@@ -1,0 +1,8 @@
+.column-layout {
+  display: flex;
+  flex-direction: row; /* Ensures components stack vertically */
+  align-items: center; /* Centers the components horizontally */
+  gap: 16px; /* Adds space between the components */
+  width: 100%; /* Full width of the container */
+  padding: 16px; /* Adds padding around the layout */
+}

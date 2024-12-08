@@ -30,7 +30,7 @@ export class DbSimulation {
 
 
   public getPriorityList(priority: any, date: string) {
-    return this.priorities;
-    // return this.priorities.filter(p => (p.priority === priority && p.date === date));
+    // return this.priorities;
+    return this.priorities.filter(p => (p.priority === priority && p.date === date));
   }
 }

@@ -9,14 +9,14 @@ export class Utilities {
     const day = date.getDate().toString().padStart(2, "0");
     const year = date.getFullYear();
 
-    return `${month}/${day}/${year}`;
+    return `${month}${day}${year}`;
   }
 
   public getCurrentDate() {
     return this.getFormattedDate(new Date());
   }
 
-  getPriorityTitle(priority: number) {
+  public getPriorityTitle(priority: number) {
     if(priority === 1)
       return 'First Priorities'
     if(priority === 2)
@@ -24,5 +24,9 @@ export class Utilities {
     if(priority === 3)
       return 'Chores/Must do'
     return '';
+  }
+
+  public getPriorityIndex(indexNum: number) {
+    return String.fromCharCode(65 + indexNum);
   }
 }
