@@ -1,18 +1,18 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { CalenderHeaderComponent } from './calender-header.component';
+import { CalendarHeaderComponent } from './calendar-header.component';
 
-describe('CalenderHeaderComponent', () => {
-  let component: CalenderHeaderComponent;
-  let fixture: ComponentFixture<CalenderHeaderComponent>;
+describe('CalendarHeaderComponent', () => {
+  let component: CalendarHeaderComponent;
+  let fixture: ComponentFixture<CalendarHeaderComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [CalenderHeaderComponent]
+      imports: [CalendarHeaderComponent]
     })
     .compileComponents();
 
-    fixture = TestBed.createComponent(CalenderHeaderComponent);
+    fixture = TestBed.createComponent(CalendarHeaderComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
