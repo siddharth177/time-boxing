@@ -1,0 +1,44 @@
+.task-card {
+  border-radius: 8px;
+  padding: 16px;
+}
+
+.mat-card-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+mat-list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.task-text {
+  flex: 1;
+  margin: 0 16px;
+  cursor: pointer;
+}
+
+.task-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.add-button {
+  display: block;
+  margin: 16px auto;
+}
+
+.custom-dialog-container {
+  border-radius: 8px;
+  padding: 16px;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.mat-dialog-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}

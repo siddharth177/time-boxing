@@ -1,0 +1,18 @@
+<div class="dialog-container">
+  <h2 mat-dialog-title>Add New Task</h2>
+  <mat-divider></mat-divider>
+
+  <mat-dialog-content>
+    <mat-form-field class="task-input" appearance="fill">
+      <mat-label>Task</mat-label>
+      <input matInput [(ngModel)]="task">
+    </mat-form-field>
+  </mat-dialog-content>
+
+  <mat-dialog-actions align="end">
+    <button mat-button (click)="closeDialog()">Close</button>
+    <button mat-raised-button color="primary" (click)="saveTask()" [disabled]="!task">
+      Save
+    </button>
+  </mat-dialog-actions>
+</div>

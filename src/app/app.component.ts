@@ -1,11 +1,13 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import {PrioritiesComponent} from './components/priorities/priorities.component';
-import {HttpClientModule, provideHttpClient} from '@angular/common/http';
+import {PriorityCardComponent} from './components/priority/priority-card/priority-card.component';
+import {Priority} from './models/Priority';
+import {DbSimulation} from './services/dbSimulation';
+import {Utilities} from './utils/Utilities';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, PrioritiesComponent],
+  imports: [RouterOutlet, PriorityCardComponent],
   templateUrl: './app.component.html',
   standalone: true,
   styleUrl: './app.component.scss',
@@ -14,5 +16,4 @@ import {HttpClientModule, provideHttpClient} from '@angular/common/http';
 })
 export class AppComponent {
   title = 'time-boxing';
-  date = new Date();
 }
