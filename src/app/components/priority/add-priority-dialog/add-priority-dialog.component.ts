@@ -10,6 +10,7 @@ import {MatTimepicker, MatTimepickerInput, MatTimepickerToggle} from '@angular/m
 import {MatIcon} from '@angular/material/icon';
 import {NgIf} from '@angular/common';
 import {MatTooltip} from '@angular/material/tooltip';
+import {BlockedTime} from '../../../models/Priority';
 
 class AddTaskDialogComponent {
 }
@@ -45,7 +46,11 @@ class AddTaskDialogComponent {
 export class AddPriorityDialogComponent {
   task: string = '';
   @Input() _dialogBoxTitle: string = 'Add New Task';
-  @Input() _startTime: any;
+  @Input() _startDate: Date = new Date();
+  @Input() _startTime: string = '';
+  @Input() _endDate: Date = new Date();
+  @Input() _endTime: string = '';
+  @Input() _boxedTimes = new Array<BlockedTime>;
   constructor(private dialogRef: MatDialogRef<AddTaskDialogComponent>) {}
 
 
@@ -58,6 +63,37 @@ export class AddPriorityDialogComponent {
   }
 
   saveSchedule() {
+    const startDateTime = new Date(`${this._startDate} ${this._startTime}`);
+    const endDateTime = new Date(`${this._endDate} ${this._endTime}`);
+
+    // Calculate the duration in milliseconds
+    const durationMs = endDateTime.getTime() - startDateTime.getTime();
+    const durationHours = Math.floor(durationMs / (1000 * 60 * 60));
+    const durationMinutes = Math.floor((durationMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    const boxedTime = {
+      startDate: this._startDate,
+      startTime: this._startTime,
+      endDate: this._endDate,
+      endTime: this._endTime,
+    };
+
+    this._boxedTimes.push(new BlockedTime(this._startDate, this._startTime, this._endDate, this._endTime));
+    // Reset the form fields if needed
+    this.resetForm();
 
   }
+
+  allFieldsFilled() {
+    return this._startTime && this._startDate
+    && this._endDate && this._endTime;
+  }
+
+  resetForm() {
+    this._startDate = new Date();
+    this._startTime = '';
+    this._endDate = new Date();
+    this._endTime = '';
+  }
+
 }

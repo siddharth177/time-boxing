@@ -27,10 +27,24 @@ export enum TaskStatus {
 }
 
 export class BlockedTime {
+  public startDate: Date
   public startTime: string;
+  public endDate: Date
+  public endTime: string;
   public duration: number;
-  constructor(startTime: string, duration: number) {
+  constructor(startDate:Date, startTime: string, endDate: Date, endTime: string) {
     this.startTime = startTime;
-    this.duration = duration;
+    this.startDate = startDate;
+    this.endDate = endDate;
+    this.endTime = endTime;
+    const startDateTime = new Date(`${this.startDate} ${this.startTime}`);
+    const endDateTime = new Date(`${this.endDate} ${this.endTime}`);
+
+    // Calculate the duration in milliseconds
+    const durationMs = endDateTime.getTime() - startDateTime.getTime();
+    const durationHours = Math.floor(durationMs / (1000 * 60 * 60));
+    const durationMinutes = Math.floor((durationMs % (1000 * 60 * 60)) / (1000 * 60));
+
+    this.duration = durationMinutes;
   }
 }

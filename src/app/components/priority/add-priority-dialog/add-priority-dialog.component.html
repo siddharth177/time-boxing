@@ -12,7 +12,7 @@
       <ng-container class="start-picker">
         <mat-form-field class="start-date-picker">
           <mat-label>Choose start date</mat-label>
-          <input matInput [matDatepicker]="startDatePicker">
+          <input matInput [matDatepicker]="startDatePicker" [(ngModel)]="_startDate">
           <mat-hint>MM/DD/YYYY</mat-hint>
           <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
           <mat-datepicker #startDatePicker></mat-datepicker>
@@ -30,25 +30,26 @@
       <ng-container class="end-picker">
         <mat-form-field class="end-date-picker">
           <mat-label>Choose end date</mat-label>
-          <input matInput [matDatepicker]="startDatePicker">
+          <input matInput [matDatepicker]="endDatePicker" [(ngModel)]="_endDate">
           <mat-hint>MM/DD/YYYY</mat-hint>
-          <mat-datepicker-toggle matIconSuffix [for]="startDatePicker"></mat-datepicker-toggle>
-          <mat-datepicker #startDatePicker></mat-datepicker>
+          <mat-datepicker-toggle matIconSuffix [for]="endDatePicker"></mat-datepicker-toggle>
+          <mat-datepicker #endDatePicker></mat-datepicker>
         </mat-form-field>
         <mat-form-field class="end-time-picker">
           <mat-label>Pick end time</mat-label>
           <input matInput
-                 [matTimepicker]="startTimepicker"
-                 [(ngModel)]="_startTime"
+                 [matTimepicker]="endTimePicker"
+                 [(ngModel)]="_endTime"
                  [ngModelOptions]="{updateOn: 'blur'}">
-          <mat-timepicker #startTimepicker/>
-          <mat-timepicker-toggle [for]="startTimepicker" matSuffix/>
+          <mat-timepicker #endTimePicker/>
+          <mat-timepicker-toggle [for]="endTimePicker" matSuffix/>
         </mat-form-field>
       </ng-container>
       <button matTooltip="save scheduler"
         mat-fab
         color="warn"
         class="add-button"
+              [disabled]="!allFieldsFilled()"
         (click)="saveSchedule()"
       >
         <mat-icon>add</mat-icon>
