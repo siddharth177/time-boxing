@@ -1,17 +1,18 @@
 <mat-card class="priority-card">
-  <mat-card-header>
-    <mat-card-title>{{priorityTitle}}</mat-card-title>
-  </mat-card-header>
+  <div class="priority-header">
+    <div class="priority-title">{{ priorityTitle }}</div>
+    <div class="priority-count">{{ priorities.length }}</div>
+  </div>
+
   <mat-card-content>
-    <div *ngFor="let priority of priorities; let i = index" class="priority">
+    <div *ngFor="let priority of priorities; let i = index" class="priority-item">
       <app-priority [priority]="priority"></app-priority>
     </div>
   </mat-card-content>
-  <mat-card-actions>
+  <mat-card-actions *ngIf="priorities.length < maxTasks" class="add-button">
     <button mat-raised-button
             color="primary"
             (click)="openTaskPopup()"
-            [disabled]="priorities.length >= maxTasks"
     >+</button>
   </mat-card-actions>
 </mat-card>

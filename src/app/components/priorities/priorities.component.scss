@@ -1,0 +1,46 @@
+.priority-card {
+  border: 1px solid #ccc;
+  position: relative;
+  padding: 16px;
+}
+
+.priority-header {
+  position: absolute;
+  top: -16px;
+  left: -16px;
+  right: -16px;
+  display: flex;
+  justify-content: space-between;
+  padding: 4px;
+  background-color: white;
+  z-index: 1;
+}
+
+.priority-title {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.priority-count {
+  font-size: 12px;
+  font-weight: bold;
+  color: #2196F3;
+}
+
+mat-card {
+  position: relative;
+  overflow: hidden;
+}
+
+
+.priority-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0;
+}
+
+.add-button {
+  margin-top: 8px;
+  display: block;
+}
